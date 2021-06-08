@@ -1,0 +1,87 @@
+
+#container-div {
+    width: 550px;
+    height: 700px;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+#display-div {
+    width: 530px;
+    height: 100px;
+    background-color: white;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+#display-number {
+    margin-right: 10px;
+}
+
+#input-div {
+    width: 400px;
+    height: 455px;
+    background-color: yellow;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.input-button {
+    width: 110px;
+    height: 105px;
+    background-color: cyan;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#function-div {
+    width: 120px;
+    height: 455px;
+    background-color: chartreuse;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.function-button {
+    width: 100px;
+    height: 100px;
+    background-color: darkorange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#action-div {
+    width: 530px;
+    height: 100px;
+    background-color: darkgrey;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.action-button {
+    width: 150px;
+    height: 80px;
+    background-color: darkorchid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+p {
+    font-size: 3em;
+}
