@@ -13,7 +13,8 @@ let divide = (x, y) => {
     if (y === 0) {
         return 'Quit trying to be smart';
     } else {
-        x / y};};
+        return x / y};
+    };
 
 // operate function that calls on an operator function based on input
 
