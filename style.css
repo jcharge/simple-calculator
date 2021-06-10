@@ -93,4 +93,5 @@ body {
 }
 p {
     font-size: 3em;
+    user-select: none;
 }

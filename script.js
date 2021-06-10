@@ -3,12 +3,17 @@
 let a;
 let b;
 let pickedOperator = '';
+let numberPicked = '';
 // Operator functions + - * /
 
 let add = (x, y) => x + y;
 let subtract = (x, y) => x - y;
 let multiply = (x, y) => x * y;
-let divide = (x, y) => x / y;
+let divide = (x, y) => {
+    if (y === 0) {
+        return 'Quit trying to be smart';
+    } else {
+        x / y};};
 
 // operate function that calls on an operator function based on input
 
@@ -28,7 +33,6 @@ function operate(x, y, operator) {
 
         default: 
             alert('Use numbers and declare operator');
-
     };
 };
 
@@ -53,37 +57,51 @@ let backspace = document.querySelector('#input-backspace');
 let clear = document.querySelector('#input-clear');
 
 one.addEventListener('click', function(e) {
-    display.textContent += '1';
+    numberPicked = '1';
+    checkForZero();
 });
 two.addEventListener('click', function(e) {
-    display.textContent += '2';
+    numberPicked = '2';
+    checkForZero();
 });
 three.addEventListener('click', function(e) {
-    display.textContent += '3';
+    numberPicked = '3';
+    checkForZero();
 });
 four.addEventListener('click', function(e) {
-    display.textContent += '4';
+    numberPicked = '4';
+    checkForZero();
 });
 five.addEventListener('click', function(e) {
-    display.textContent += '5';
+    numberPicked = '5';
+    checkForZero();
 });
 six.addEventListener('click', function(e) {
-    display.textContent += '6';
+    numberPicked = '6';
+    checkForZero();
 });
 seven.addEventListener('click', function(e) {
-    display.textContent += '7';
+    numberPicked = '7';
+    checkForZero();
 });
 eight.addEventListener('click', function(e) {
-    display.textContent += '8';
+    numberPicked = '8';
+    checkForZero();
 });
 nine.addEventListener('click', function(e) {
-    display.textContent += '9';
+    numberPicked = '9';
+    checkForZero();
 });
 zero.addEventListener('click', function(e) {
-    display.textContent += '0';
+    numberPicked = '0';
+    checkForZero();
 });
 decimal.addEventListener('click', function(e) {
-    display.textContent += '.';
+        if (display.textContent.indexOf('.') > -1) {
+            display.textContent += '';
+        } else {
+            display.textContent += '.';
+        }
 });
 
 backspace.addEventListener('click', function(e) {
@@ -136,7 +154,7 @@ equals.addEventListener('click', e => {
     display.textContent = display.textContent.replace(/[0-9]/g, '');
     display.textContent = display.textContent.replace(/./g, '');
     display.textContent = display.textContent.replace(/[a-z]/g, '');
-    display.textContent = operate(a, b, pickedOperator)
+    display.textContent = operate(a, b, pickedOperator);
 })
 // a functions that store the displayed numbers in a variable
 
@@ -147,3 +165,14 @@ function storeFirstNumber() {
 function storeSecondNumber() {
     b = Number(display.textContent);
 };
+
+
+// a function that checks if the first number is a zero and replaces it
+// if it is, with the new number. Otherwise it adds the new number
+function checkForZero() {
+    if (display.textContent.indexOf('0') == 0 && display.textContent.length == 1) {
+        display.textContent = display.textContent.replace('0', `${numberPicked}`);
+    } else {
+        display.textContent += `${numberPicked}`;
+    }
+}
