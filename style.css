@@ -1,4 +1,8 @@
-
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #container-div {
     width: 550px;
     height: 700px;
@@ -42,6 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 15%;
 }
 
 #function-div {
@@ -63,9 +68,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 15%;
+
 }
 #action-div {
-    width: 530px;
+    width: 400px;
     height: 100px;
     background-color: darkgrey;
     margin-left: 10px;
@@ -75,12 +82,14 @@
     align-items: center;
 }
 .action-button {
-    width: 150px;
+    width: 170px;
     height: 80px;
     background-color: darkorchid;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 5%;
+
 }
 p {
     font-size: 3em;
