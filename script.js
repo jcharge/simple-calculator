@@ -2,7 +2,7 @@
 
 let a;
 let b;
-
+let pickedOperator = '';
 // Operator functions + - * /
 
 let add = (x, y) => x + y;
@@ -94,6 +94,7 @@ clear.addEventListener('click', function(e) {
     display.textContent = display.textContent.replace(/[0-9]/g, '');
     display.textContent = display.textContent.replace(/./g, '');
     display.textContent = display.textContent.replace(/[a-z]/g, '');
+    pickedOperator = '';
 });
 
 // Operator events
@@ -105,15 +106,19 @@ let multiplyBtn = document.querySelector('#input-multiply');
 let divideBtn = document.querySelector('#input-divide');
 
 addBtn.addEventListener('click', e => {
+    pickedOperator = 'add';
     storeFirstNumber();
 });
 subtractBtn.addEventListener('click', e => {
+    pickedOperator = 'subtract';
     storeFirstNumber();
 });
 multiplyBtn.addEventListener('click', e => {
+    pickedOperator = 'multiply'
     storeFirstNumber();
 });
 divideBtn.addEventListener('click', e => {
+    pickedOperator = 'divide'
     storeFirstNumber();
 });
 functionBtn.forEach(button => {
@@ -123,8 +128,22 @@ functionBtn.forEach(button => {
         display.textContent = display.textContent.replace(/[a-z]/g, '');
     })
 });
-// a function that takes the first number and stores it in a variable
+
+// Equals event that stores the second number and runs the selected operation
+
+equals.addEventListener('click', e => {
+    storeSecondNumber();
+    display.textContent = display.textContent.replace(/[0-9]/g, '');
+    display.textContent = display.textContent.replace(/./g, '');
+    display.textContent = display.textContent.replace(/[a-z]/g, '');
+    display.textContent = operate(a, b, pickedOperator)
+})
+// a functions that store the displayed numbers in a variable
 
 function storeFirstNumber() {
     a = Number(display.textContent);
 }
+
+function storeSecondNumber() {
+    b = Number(display.textContent);
+};
