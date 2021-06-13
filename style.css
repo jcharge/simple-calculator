@@ -6,10 +6,10 @@ body {
 #container-div {
     width: 550px;
     height: 700px;
-    background-color: black;
+    background-color: cadetblue;
     display: flex;
     flex-wrap: wrap;
-    
+    border-radius: 15px;
 }
 
 #display-div {
@@ -22,74 +22,58 @@ body {
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
+    border-radius: 15px;
 }
 #display-number {
     margin-right: 10px;
 }
-
-#input-div {
-    width: 400px;
-    height: 455px;
-    background-color: yellow;
+#first-input-div {
+    height: 565px;
+    width: 265px;
     margin-top: 10px;
     margin-left: 10px;
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    border-radius: 10px 0px 0px 10px;
 }
-
-.input-button {
+#second-input-div {
+    width: 265px;
+    height: 565px;
+    background-color: white;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 0px 10px 10px 0px;
+}
+.button {
     width: 110px;
     height: 105px;
-    background-color: cyan;
+    background-color: #7cd1d4;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 15%;
-}
-
-#function-div {
-    width: 120px;
-    height: 455px;
-    background-color: chartreuse;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
 }
 .function-button {
-    width: 100px;
-    height: 100px;
-    background-color: darkorange;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15%;
-
+    background-color: #61b2b5;
 }
-#action-div {
-    width: 400px;
-    height: 100px;
-    background-color: darkgrey;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+#input-equals {
+    width: 240px;
+    border-radius: 15px;
+    background-color: orange;
 }
-.action-button {
-    width: 170px;
-    height: 80px;
-    background-color: darkorchid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5%;
-
+#input-clear {
+    width: 240px;
+    border-radius: 15px;
+    background-color: orangered;
+}
+#input-backspace {
+    background-color: #ffd587;
 }
 p {
     font-size: 3em;
