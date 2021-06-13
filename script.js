@@ -112,15 +112,20 @@ backspace.addEventListener('click', function(e) {
 });
 
 clear.addEventListener('click', function(e) {
-    display.textContent = display.textContent.replace(/[0-9]/g, '');
-    display.textContent = display.textContent.replace(/./g, '');
-    display.textContent = display.textContent.replace(/[a-z]/g, '');
+    clearNumbers()
     pickedOperator = '';
 });
 
-// Operator events
+// a function the clears the numbers on the 'display'
+function clearNumbers() {
+    display.textContent = display.textContent.replace(/[0-9]/g, '');
+    display.textContent = display.textContent.replace(/./g, '');
+    display.textContent = display.textContent.replace(/[a-z]/g, '')
+}
 
-let functionBtn = document.querySelectorAll('.function-button');
+// Operator/equals events
+
+let OperatorBtn = document.querySelectorAll('.Operator-button');
 let addBtn = document.querySelector('#input-add');
 let subtractBtn = document.querySelector('#input-subtract');
 let multiplyBtn = document.querySelector('#input-multiply');
@@ -142,11 +147,9 @@ divideBtn.addEventListener('click', e => {
     pickedOperator = 'divide'
     storeFirstNumber();
 });
-functionBtn.forEach(button => {
+OperatorBtn.forEach(button => {
     button.addEventListener('click', e => {
-        display.textContent = display.textContent.replace(/[0-9]/g, '');
-        display.textContent = display.textContent.replace(/./g, '');
-        display.textContent = display.textContent.replace(/[a-z]/g, '');
+        clearNumbers();
     })
 });
 
@@ -154,9 +157,7 @@ functionBtn.forEach(button => {
 
 equals.addEventListener('click', e => {
     storeSecondNumber();
-    display.textContent = display.textContent.replace(/[0-9]/g, '');
-    display.textContent = display.textContent.replace(/./g, '');
-    display.textContent = display.textContent.replace(/[a-z]/g, '');
+    clearNumbers();
     display.textContent = operate(a, b, pickedOperator);
 })
 // a functions that store the displayed numbers in a variable
@@ -180,4 +181,23 @@ function checkNumberStage() {
     }  else {
         display.textContent += `${numberPicked}`;
     }
+}
+
+// Animations for the buttons
+let buttons = document.querySelectorAll('.button')
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        button.classList.add('button-animation');
+    });
+    button.addEventListener('transitionend', transitionEnd)
+});
+
+//transition remove function
+
+function transitionEnd(e) {
+    if(e.propertyName !== 'transform') {
+        return;
+    }
+    this.classList.remove('button-animation')
 }
