@@ -59,46 +59,48 @@ let clear = document.querySelector('#input-clear');
 
 one.addEventListener('click', function(e) {
     numberPicked = '1';
-    checkForZero();
+    checkNumberStage();
 });
 two.addEventListener('click', function(e) {
     numberPicked = '2';
-    checkForZero();
+    checkNumberStage();
 });
 three.addEventListener('click', function(e) {
     numberPicked = '3';
-    checkForZero();
+    checkNumberStage();
 });
 four.addEventListener('click', function(e) {
     numberPicked = '4';
-    checkForZero();
+    checkNumberStage();
 });
 five.addEventListener('click', function(e) {
     numberPicked = '5';
-    checkForZero();
+    checkNumberStage();
 });
 six.addEventListener('click', function(e) {
     numberPicked = '6';
-    checkForZero();
+    checkNumberStage();
 });
 seven.addEventListener('click', function(e) {
     numberPicked = '7';
-    checkForZero();
+    checkNumberStage();
 });
 eight.addEventListener('click', function(e) {
     numberPicked = '8';
-    checkForZero();
+    checkNumberStage();
 });
 nine.addEventListener('click', function(e) {
     numberPicked = '9';
-    checkForZero();
+    checkNumberStage();
 });
 zero.addEventListener('click', function(e) {
     numberPicked = '0';
-    checkForZero();
+    checkNumberStage();
 });
 decimal.addEventListener('click', function(e) {
-        if (display.textContent.indexOf('.') > -1) {
+        if (display.textContent.length >= 16) {
+            alert(`Can't enter more than 16 digits`);
+        } else if (display.textContent.indexOf('.') > -1) {
             display.textContent += '';
         } else {
             display.textContent += '.';
@@ -167,13 +169,15 @@ function storeSecondNumber() {
     b = Number(display.textContent);
 };
 
+// a function to keep the number length within the display and keeps the
+// user from inputting a bunch of zeroes as the first numbers
 
-// a function that checks if the first number is a zero and replaces it
-// if it is, with the new number. Otherwise it adds the new number
-function checkForZero() {
+function checkNumberStage() {
     if (display.textContent.indexOf('0') == 0 && display.textContent.length == 1) {
         display.textContent = display.textContent.replace('0', `${numberPicked}`);
-    } else {
+    } else if (display.textContent.length >= 16) {
+        alert(`Can't enter more than 16 digits`);
+    }  else {
         display.textContent += `${numberPicked}`;
     }
 }
