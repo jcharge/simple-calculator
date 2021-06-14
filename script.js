@@ -154,12 +154,6 @@ divideBtn.addEventListener('click', e => {
     stringOfOperations();
     pickedOperator = 'divide';
 });
-OperatorBtn.forEach(button => {
-    button.addEventListener('click', e => {
-        
-    })
-});
-
 // a function that allows a string of functions to be used
 // for ex 12 + 7 - 5 x 3 will come out as 42
 
@@ -240,11 +234,82 @@ function transitionEnd(e) {
     this.classList.remove('button-animation')
 }
 
-/* function pickANumber() {
-    if (a !== undefined && b !== undefined) {
-        storeFirstNumber();
-        clearNumbers();
-        display.textContent += `${numberPicked}`;
+// Keyboard Support
+
+window.addEventListener('keydown', function(e) {
+
+    if (e.keyCode == 49) {
+        numberPicked = '1';
+        checkNumberStage();
+    } else if (e.keyCode == 50) {
+        numberPicked = '2';
+        checkNumberStage();
+    } else if (e.keyCode == 51) {
+        numberPicked = '3';
+        checkNumberStage();
+    } else if (e.keyCode == 52) {
+        numberPicked = '4';
+        checkNumberStage();
+    } else if (e.keyCode == 53) {
+        numberPicked = '5';
+        checkNumberStage();
+    } else if (e.keyCode == 54) {
+        numberPicked = '6';
+        checkNumberStage();
+    } else if (e.keyCode == 55) {
+        numberPicked = '7';
+        checkNumberStage();
+    }  else if (e.keyCode == 88 || e.shiftKey && e.keyCode == 56) {
+        stringOfOperations();
+        pickedOperator = 'multiply';
+    } else if (e.keyCode == 56) {
+        numberPicked = '8';
+        checkNumberStage();
+    } else if (e.keyCode == 57) {
+        numberPicked = '9';
+        checkNumberStage();
+    } else if (e.keyCode == 48) {
+        numberPicked = '0';
+        checkNumberStage();
+    } else if (e.keyCode == 190) {
+
+        if (a !== undefined && b !== undefined) {
+            storeFirstNumber();
+            clearNumbers();
+            display.textContent += '.';
+            b = undefined;
+        } else if (display.textContent.indexOf('.') > -1) {
+            display.textContent += '';
+        } else if (display.textContent.length >= 16) {
+            alert(`Can't enter more than 16 digits`);
+        }  else {
+            display.textContent += '.';
+        }
+    } else if (e.keyCode == 8 && e.shiftKey) {
+        clearNumbers()
+        pickedOperator = '';
+        a = undefined;
         b = undefined;
+    } else if (e.keyCode == 8) {
+        display.textContent = display.textContent.substring(0, display.textContent.length - 1);
+    } else if (e.shiftKey && e.keyCode == 187) {
+        stringOfOperations();
+        pickedOperator = 'add';
+    } else if (e.shiftKey && e.keyCode == 189) {
+        if (display.textContent.charAt(0) == '-') {
+            display.textContent = display.textContent.replace(/-/g, '')
+        } else {
+            display.textContent = '-' + display.textContent;
+        }
+    } else if (e.keyCode == 189) {
+        stringOfOperations();
+        pickedOperator = 'subtract';
+    } else if (e.keyCode == 191) {
+        stringOfOperations();
+        pickedOperator = 'divide';
+    } else if (e.keyCode == 187) {
+        storeSecondNumber();
+        clearNumbers();
+        display.textContent = operate(a, b, pickedOperator);
     }
-} */
+})
