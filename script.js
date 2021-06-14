@@ -97,12 +97,17 @@ zero.addEventListener('click', function(e) {
     numberPicked = '0';
     checkNumberStage();
 });
-decimal.addEventListener('click', function(e) {
-        if (display.textContent.length >= 16) {
-            alert(`Can't enter more than 16 digits`);
+decimal.addEventListener('click', function(e) {    
+        if (a !== undefined && b !== undefined) {
+            storeFirstNumber();
+            clearNumbers();
+            display.textContent += '.';
+            b = undefined;
         } else if (display.textContent.indexOf('.') > -1) {
             display.textContent += '';
-        } else {
+        } else if (display.textContent.length >= 16) {
+            alert(`Can't enter more than 16 digits`);
+        }  else {
             display.textContent += '.';
         }
 });
@@ -114,6 +119,8 @@ backspace.addEventListener('click', function(e) {
 clear.addEventListener('click', function(e) {
     clearNumbers()
     pickedOperator = '';
+    a = undefined;
+    b = undefined;
 });
 
 // a function the clears the numbers on the 'display'
@@ -132,27 +139,40 @@ let multiplyBtn = document.querySelector('#input-multiply');
 let divideBtn = document.querySelector('#input-divide');
 
 addBtn.addEventListener('click', e => {
+    stringOfOperations();
     pickedOperator = 'add';
-    storeFirstNumber();
 });
 subtractBtn.addEventListener('click', e => {
+    stringOfOperations();
     pickedOperator = 'subtract';
-    storeFirstNumber();
 });
 multiplyBtn.addEventListener('click', e => {
-    pickedOperator = 'multiply'
-    storeFirstNumber();
+    stringOfOperations();
+    pickedOperator = 'multiply';
 });
 divideBtn.addEventListener('click', e => {
-    pickedOperator = 'divide'
-    storeFirstNumber();
+    stringOfOperations();
+    pickedOperator = 'divide';
 });
 OperatorBtn.forEach(button => {
     button.addEventListener('click', e => {
-        clearNumbers();
+        
     })
 });
 
+// a function that allows a string of functions to be used
+// for ex 12 + 7 - 5 x 3 will come out as 42
+
+function stringOfOperations() {
+    if (a === undefined) {
+        storeFirstNumber();
+        clearNumbers();
+    } else if (a !== undefined) {
+        storeSecondNumber();
+        clearNumbers();
+        display.textContent = operate(a, b, pickedOperator)
+    }
+}
 // Equals event that stores the second number and runs the selected operation
 
 equals.addEventListener('click', e => {
@@ -183,9 +203,16 @@ function storeSecondNumber() {
 
 // a function to keep the number length within the display and keeps the
 // user from inputting a bunch of zeroes as the first numbers
+// and a function for the number buttons to replace the displayed number
+// in the event the user uses multiple functions rather than a function then equal
 
 function checkNumberStage() {
-    if (display.textContent.indexOf('0') == 0 && display.textContent.length == 1) {
+    if (a !== undefined && b !== undefined) {
+        storeFirstNumber();
+        clearNumbers();
+        display.textContent += `${numberPicked}`;
+        b = undefined;
+    } else if (display.textContent.indexOf('0') == 0 && display.textContent.length == 1) {
         display.textContent = display.textContent.replace('0', `${numberPicked}`);
     } else if (display.textContent.length >= 16) {
         alert(`Can't enter more than 16 digits`);
@@ -212,3 +239,12 @@ function transitionEnd(e) {
     }
     this.classList.remove('button-animation')
 }
+
+/* function pickANumber() {
+    if (a !== undefined && b !== undefined) {
+        storeFirstNumber();
+        clearNumbers();
+        display.textContent += `${numberPicked}`;
+        b = undefined;
+    }
+} */
