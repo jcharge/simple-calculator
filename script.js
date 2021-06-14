@@ -160,6 +160,17 @@ equals.addEventListener('click', e => {
     clearNumbers();
     display.textContent = operate(a, b, pickedOperator);
 })
+
+// a button that makes the number negative or positive
+let negativeBtn = document.querySelector('#input-negative');
+
+negativeBtn.addEventListener('click', () => {
+    if (display.textContent.charAt(0) == '-') {
+        display.textContent = display.textContent.replace(/-/g, '')
+    } else {
+        display.textContent = '-' + display.textContent;
+    }
+})
 // a functions that store the displayed numbers in a variable
 
 function storeFirstNumber() {
